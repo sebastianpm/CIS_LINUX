@@ -1,38 +1,15 @@
----
-- hosts: all
-  gather_facts: False
-  tasks:
-    - name: Check Dist Version
-      shell: cat /etc/os-release
-      register: response
-
-    - debug: msg="{{ response.stdout }}"
-    
-    - name: "SCORED | 1.1.1.1 | PATCH | Ensure mounting of cramfs filesystems is disabled"
-      lineinfile:
-        dest: /etc/modprobe.d/CIS.conf
-        regexp: "^(#)?install cramfs(\\s|$)"
-        line: "install cramfs /bin/true"
-        create: yes
-      when:
-        - centos7cis_level1 is defined and centos7cis_level1
-      tags:
-        - level1
-        - scored
-        - patch
-        - rule_1.1.1.1
-        - cramfs
-    - name: "SCORED | 1.1.1.2 | PATCH | Ensure mounting of freevxfs filesystems is disabled"
-      lineinfile:
-        dest: /etc/modprobe.d/CIS.conf
-        regexp: "^(#)?install freevxfs(\\s|$)"
-        line: "install freevxfs /bin/true"
-        create: yes
-      when:
-        - centos7cis_level1 is defined and centos7cis_level1
-      tags:
-        - level1
-        - scored
-        - patch
-        - rule_1.1.1.2
-        - freevxfs
+- gather_facts: False
+- name: "SCORED | 1.1.1.1 | PATCH | Ensure mounting of cramfs filesystems is disabled"
+  lineinfile:
+    dest: /etc/modprobe.d/CIS.conf
+    regexp: "^(#)?install cramfs(\\s|$)"
+    line: "install cramfs /bin/true"
+    create: yes
+  when:
+    - centos7cis_level1 is defined and centos7cis_level1
+  tags:
+    - level1
+    - scored
+    - patch
+    - rule_1.1.1.1
+    - cramfs
