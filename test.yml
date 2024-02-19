@@ -1,6 +1,5 @@
 - name: "SCORED | Ensure mounting of cramfs filesystems is disabled"
   hosts: all
-  become: yes
   tasks:
     - name: "Ensure cramfs filesystems are disabled"
       lineinfile:
@@ -18,3 +17,4 @@
         - patch
         - rule_1.1.1.1
         - cramfs
+
