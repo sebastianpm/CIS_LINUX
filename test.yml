@@ -15,10 +15,10 @@
         line: "install cramfs /bin/true"
         create: yes
       when:
-      - centos7cis_level1 is defined and centos7cis_level1
-    tags:
-      - level1
-      - scored
-      - patch
-      - rule_1.1.1.1
-      - cramfs
+        - centos7cis_level1 is defined and centos7cis_level1
+      tags:
+        - level1
+        - scored
+        - patch
+        - rule_1.1.1.1
+        - cramfs
