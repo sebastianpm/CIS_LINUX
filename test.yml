@@ -1,14 +1,20 @@
-- name: "SCORED | 1.1.1.1 | PATCH | Ensure mounting of cramfs filesystems is disabled"
-  lineinfile:
-    dest: /etc/modprobe.d/CIS.conf
-    regexp: "^(#)?install cramfs(\\s|$)"
-    line: "install cramfs /bin/true"
-    create: yes
-  when:
-    - centos7cis_level1 is defined and centos7cis_level1
-  tags:
-    - level1
-    - scored
-    - patch
-    - rule_1.1.1.1
-    - cramfs
+- name: "SCORED | Ensure mounting of cramfs filesystems is disabled"
+  hosts: all
+  become: yes
+  tasks:
+    - name: "Ensure cramfs filesystems are disabled"
+      lineinfile:
+        dest: "{{ cis_conf_path }}"  # Path of the CIS configuration file
+        regexp: "^(#)?install cramfs(\\s|$)"
+        line: "install cramfs /bin/true"
+        create: yes
+      when:
+        - ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
+        - cis_level == 'level1'
+        - patch_enabled
+      tags:
+        - level1
+        - scored
+        - patch
+        - rule_1.1.1.1
+        - cramfs
