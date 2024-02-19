@@ -136,20 +136,6 @@
         - patch
         - rule_1.1.20
 
-    - name: "SCORED | 1.1.21 | PATCH | Ensure sticky bit is set on all world-writable directories"
-      shell: |
-        set -o pipefail
-        df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -type d -perm -0002 2>/dev/null | xargs chmod a+t
-      #when: sticky_bit_on_worldwritable_dirs_audit.rc == '0'
-      args:
-      executable: /usr/bin/bash
-      when:
-        - centos7cis_level1 is defined and centos7cis_level1
-      tags:
-        - level1
-        - patch
-        - rule_1.1.21
-
     - name: "SCORED | 1.1.22 | PATCH | Disable Automounting"
       systemd:
         name: autofs
@@ -633,4 +619,3 @@
         - level1
         - patch
         - rule_1.8
-
