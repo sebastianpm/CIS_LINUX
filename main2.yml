@@ -1,4 +1,11 @@
 ---
+- name: CIS Benchmark for CentOS 7
+  hosts: all
+  vars:
+    - cis_level_1: 'yes'
+    - cis_level_2: 'no'
+    - cis_level_1_scored: 'yes'
+    - cis_level_2_scored: 'no'
 # tasks file for CentOS7-CIS
 - name: "Check OS version and family"
   fail:
