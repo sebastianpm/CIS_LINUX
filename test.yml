@@ -1,12 +1,7 @@
 ---
 - name: CIS Benchmark for CentOS 7
   hosts: all
-  vars:
-    - cis_level_1: 'yes'
-    - cis_level_2: 'yes'
-    - cis_level_1_scored: 'yes'
-    - cis_level_2_scored: 'yes'
-
+  
   tasks:
 
     # 1.1.1 Ensure mounting of cramfs filesystems is disabled
@@ -28,35 +23,35 @@
       mount:
         name: jffs2
         state: absent
-      when: (cis_level_1|bool and cis_level_1_scored|bool) or (cis_level_2|bool and cis_level_2_scored|bool)
+      when: (cis_level_1|bool and |bool) or (cis_level_2|bool and cis_level_2_scored|bool)
 
     # 1.1.4 Ensure mounting of hfs filesystems is disabled
     - name: 1.1.4 Ensure mounting of hfs filesystems is disabled
       mount:
         name: hfs
         state: absent
-      when: (cis_level_1|bool and cis_level_1_scored|bool) or (cis_level_2|bool and cis_level_2_scored|bool)
+      when: (cis_level_1|bool and |bool) or (cis_level_2|bool and cis_level_2_scored|bool)
 
     # 1.1.5 Ensure mounting of hfsplus filesystems is disabled
     - name: 1.1.5 Ensure mounting of hfsplus filesystems is disabled
       mount:
         name: hfsplus
         state: absent
-      when: (cis_level_1|bool and cis_level_1_scored|bool) or (cis_level_2|bool and cis_level_2_scored|bool)
+      when: (cis_level_1|bool and |bool) or (cis_level_2|bool and cis_level_2_scored|bool)
 
     # 1.1.6 Ensure mounting of squashfs filesystems is disabled
     - name: 1.1.6 Ensure mounting of squashfs filesystems is disabled
       mount:
         name: squashfs
         state: absent
-      when: (cis_level_1|bool and cis_level_1_scored|bool) or (cis_level_2|bool and cis_level_2_scored|bool)
+      when: (cis_level_1|bool and |bool) or (cis_level_2|bool and cis_level_2_scored|bool)
 
     # 1.1.7 Ensure mounting of udf filesystems is disabled
     - name: 1.1.7 Ensure mounting of udf filesystems is disabled
       mount:
         name: udf
         state: absent
-      when: (cis_level_1|bool and cis_level_1_scored|bool) or (cis_level_2|bool and cis_level_2_scored|bool)
+      when: (cis_level_1|bool and |bool) or (cis_level_2|bool and cis_level_2_scored|bool)
 
     # 1.1.8 Ensure mounting of FAT filesystems is disabled
     - name: 1.1.8 Ensure mounting of FAT filesystems is disabled
