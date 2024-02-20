@@ -1,7 +1,11 @@
 ---
 - name: CIS Benchmark for CentOS 7
   hosts: all
-  
+  vars:
+    - cis_level_1: 'yes'
+    - cis_level_2: 'no'
+    - cis_level_1_scored: 'yes'
+    - cis_level_2_scored: 'no'
   tasks:
 
     # 1.1.1 Ensure mounting of cramfs filesystems is disabled
